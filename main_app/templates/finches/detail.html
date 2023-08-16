@@ -37,7 +37,7 @@
       </thead>
       <tbody>
         <!-- Weird Bug that NEEDS attention -->
-        {% for feeding in cat.feeding_set.all %}
+        {% for feeding in finch.feeding_set.all %}
           <tr>
             <td>{{feeding.date}}</td>
             <td>{{feeding.get_meal_display}}</td>
