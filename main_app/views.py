@@ -31,8 +31,6 @@ def finch_detail(request, finch_id):
     id_list = finch.toys.all().values_list('id')
     toys_finch_doesnt_have = Toy.objects.exclude(id__in=id_list)
 
-
-
     feeding_form = FeedingForm()
 
     return render(request, 'finches/detail.html', {
@@ -74,8 +72,8 @@ class ToyDetail(DetailView):
     model = Toy
 
 class ToyCreate(CreateView):
-    model = Toy
-    fields = '__all__'
+  model = Toy
+  fields = '__all__'
 
 class ToyUpdate(UpdateView):
     model = Toy
