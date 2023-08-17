@@ -26,6 +26,16 @@ class Finch(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'finch_id': self.id})
     
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    # A finch has many photos, a photo belong to a Finch
+    finch = models.ForeignKey(Finch, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for finch_id: {self.finch_id} @{self.url}"
+    
+    
+    
     
 MEALS = (
     ('B', 'Breakfast'),
@@ -36,6 +46,7 @@ MEALS = (
 class Feeding(models.Model):
     date = models.DateField()
     meals = models.CharField(max_length=1, choices= MEALS, default=MEALS[0][0])
+    #Check if you use the same name variable for finch 
     finch = models.ForeignKey(Finch, on_delete=models.CASCADE)
 
     def __str__(self):
